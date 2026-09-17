@@ -26,6 +26,8 @@ async fn main(){
     let app = Router::new()
         .route("/translate", post(translate_handler))
         .route("/status", get(status_handler));
+    
+    let addr = SocketAddr::from(([127, 0, 0, 1], 5345));
 }
 
 async fn translate_handler(
