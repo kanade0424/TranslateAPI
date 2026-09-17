@@ -43,4 +43,17 @@ async fn status_handler() -> StatusCode {
     let start_time = std::time::Instant::now();
     let result = translator.translate("en", "ja", "healthcheck").await;
     let duration = start_time.elapsed();
+
+
+
+    match result {
+        Ok(_) => {
+            if duration.as_secs() > 3 {
+                StatusCode::SERVICE_UNAVAILABLE
+            } else {
+                StatusCode::OK
+            }
+        }
+        Err(_) => StatusCode::SERVICE_UNAVAILABLE,
+    }
 }
