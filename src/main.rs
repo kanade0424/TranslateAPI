@@ -37,3 +37,7 @@ async fn translate_handler(
         Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
     }
 }
+
+async fn status_handler() -> StatusCode {
+    let translator = Translator::default();
+}
