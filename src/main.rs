@@ -16,3 +16,5 @@ struct TranslateRequest {
 struct TranslateResponse {
     text: String,
 }
+
+#[tokio::main]
