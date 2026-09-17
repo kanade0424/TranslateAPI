@@ -11,3 +11,8 @@ struct TranslateRequest {
     target: String,
     text: String,
 }
+
+#[derive(Serialize, Debug)]
+struct TranslateResponse {
+    text: String,
+}
