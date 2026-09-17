@@ -27,4 +27,6 @@ async fn main(){
 
 async fn translate_handler(
     Json(payload): Json<TranslateRequest>,
-) -> Result<Json<TranslateResponse>, StatusCode> {}
+) -> Result<Json<TranslateResponse>, StatusCode> {
+    let translator = Translator::default();
+}
