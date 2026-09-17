@@ -28,6 +28,9 @@ async fn main(){
         .route("/status", get(status_handler));
     
     let addr = SocketAddr::from(([127, 0, 0, 1], 5345));
+
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+    axum::serve(listener, app).await.unwrap();
 }
 
 async fn translate_handler(
