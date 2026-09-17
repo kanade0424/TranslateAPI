@@ -22,6 +22,7 @@ struct TranslateResponse {
 
 #[tokio::main]
 async fn main(){
+    let port = 5345;
 
     let app = Router::new()
         .route("/translate", post(translate_handler))
