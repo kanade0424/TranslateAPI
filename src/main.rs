@@ -28,7 +28,7 @@ async fn main(){
         .route("/translate", post(translate_handler))
         .route("/status", get(status_handler));
     
-    let addr = SocketAddr::from(([127, 0, 0, 1], 5345));
+    let addr = SocketAddr::from(([127, 0, 0, 1], &port));
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
