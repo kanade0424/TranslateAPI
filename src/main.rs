@@ -53,7 +53,6 @@ async fn translate_handler(
 }
 
 async fn status_handler() -> StatusCode {
-    let translator = Translator::default();
     let start_time = std::time::Instant::now();
     let result = translator.translate("en", "ja", "healthcheck").await;
     let duration = start_time.elapsed();
