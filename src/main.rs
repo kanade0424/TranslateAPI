@@ -38,6 +38,7 @@ async fn main()-> Result <(), Box<dyn std::error::Error>>{
 }
 
 async fn translate_handler(
+    State(translator): State<Arc<Translator>>,
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
     let translator = Translator::default();
