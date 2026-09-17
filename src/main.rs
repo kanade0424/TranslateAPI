@@ -20,9 +20,9 @@ struct TranslateResponse {
 }
 
 #[tokio::main]
-async fn main(){
+async fn main()-> Result <() Box<dyn std::error:Error>>{
     let translator = Translator::setup(None).await?;
-    
+
     let port = 5345;
 
     let app = Router::new()
@@ -33,6 +33,7 @@ async fn main(){
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
+    Ok(())
 }
 
 async fn translate_handler(
