@@ -18,3 +18,6 @@ struct TranslateResponse {
 }
 
 #[tokio::main]
+async fn main(){
+    
+}
