@@ -21,7 +21,7 @@ struct TranslateResponse {
 
 #[tokio::main]
 async fn main()-> Result <(), Box<dyn std::error::Error>>{
-    let translator = Translator::setup(None).await?;
+    let translator = Arc::new(Translator::setup(None).await?);
 
     let port = 5345;
 
