@@ -4,7 +4,6 @@ use axum::{
     Json, Router,
 };
 use serde::{Deserialize, Serialize};
-use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
 use trad::Translator;
 
