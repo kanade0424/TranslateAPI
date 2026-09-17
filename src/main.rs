@@ -41,8 +41,7 @@ async fn translate_handler(
     State(translator): State<Arc<Translator>>,
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
-    let translator = Translator::default();
-
+    
     match translator.translate(&payload.sauce, &payload.target, &payload.text).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
