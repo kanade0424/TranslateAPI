@@ -23,6 +23,9 @@ struct TranslateResponse {
 #[tokio::main]
 async fn main(){
 
+    let app = Router::new()
+        .route("/translate", post(translate_handler))
+        .route("/status", get(status_handler));
 }
 
 async fn translate_handler(
