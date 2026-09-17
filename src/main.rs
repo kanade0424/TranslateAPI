@@ -19,5 +19,9 @@ struct TranslateResponse {
 
 #[tokio::main]
 async fn main(){
-    
+
 }
+
+async fn translate_handler(
+    Json(payload): Json<TranslateRequest>,
+) -> Result<Json<TranslateResponse>, StatusCode> {}
