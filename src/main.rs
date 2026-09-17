@@ -27,7 +27,8 @@ async fn main()-> Result <(), Box<dyn std::error::Error>>{
 
     let app = Router::new()
         .route("/translate", post(translate_handler))
-        .route("/status", get(status_handler));
+        .route("/status", get(status_handler))
+        .with_state(translator);
     
     let addr = SocketAddr::from(([127, 0, 0, 1], port));
 
