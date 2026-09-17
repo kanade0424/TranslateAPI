@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
 use trad::Translator;
 
+use std::sync::Arc;
 #[derive(Deserialize, Debug)]
 struct TranslateRequest {
     sauce: String,
@@ -41,7 +42,7 @@ async fn translate_handler(
     State(translator): State<Arc<Translator>>,
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
-    
+
     match translator.translate(&payload.sauce, &payload.target, &payload.text).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
