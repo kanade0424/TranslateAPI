@@ -4,3 +4,10 @@ use axum::{
     Json, Router,
 };
 use serde::{Deserialize, Serialize};
+
+#[derive(Deserialize, Debug)]
+struct TranslateRequest {
+    sauce: String,
+    target: String,
+    text: String,
+}
