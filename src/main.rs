@@ -11,7 +11,7 @@ use trad::Translator;
 use std::sync::Arc;
 #[derive(Deserialize, Debug)]
 struct TranslateRequest {
-    sauce: String,
+    source: String,
     target: String,
     text: String,
 }
@@ -44,7 +44,7 @@ async fn translate_handler(
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
 
-    match translator.translate(&payload.sauce, &payload.target, &payload.text).await {
+    match translator.translate(&payload.source, &payload.target, &payload.text).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
         })),
