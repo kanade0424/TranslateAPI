@@ -7,7 +7,7 @@ HTTPメソッド:`POST`
 リクエストbody
 ```json
 {
-    "sauce":"ja",
+    "source":"ja",
     "target":"en",
     "text": "こんにちは"
 }
