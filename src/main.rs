@@ -44,8 +44,7 @@ async fn translate_handler(
     State(translator): State<Arc<Translator>>,
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
-
-    match translator.translate(&payload.source, &payload.target, &payload.text).await {
+    match translator.translate(&payload.text, &payload.source, &payload.target).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
         })),
@@ -55,10 +54,8 @@ async fn translate_handler(
 
 async fn status_handler(State(translator): State<Arc<Translator>>,) -> StatusCode {
     let start_time = std::time::Instant::now();
-    let result = translator.translate("en", "ja", "healthcheck").await;
+    let result = translator.translate("healthcheck", "en", "ja").await;
     let duration = start_time.elapsed();
-
-
 
     match result {
         Ok(_) => {
