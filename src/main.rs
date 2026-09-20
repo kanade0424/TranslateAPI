@@ -67,3 +67,16 @@ async fn status_handler(State(translator): State<Arc<Translator>>,) -> StatusCod
         Err(_) => StatusCode::SERVICE_UNAVAILABLE,
     }
 }
+
+fn lang_maping(code: &str) -> Result<trad::Language, StatusCode> {
+    match code.to_lowercase().as_str() {
+        "ja" => Ok(languages::JAPANESE),
+        "en" => Ok(languages::ENGLISH),
+        "de" => Ok(languages::GERMAN),
+        "ko" => Ok(languages::KOREAN),
+        "zh" => Ok(languages::CHINESE),
+        "fr" => Ok(languages::FRENCH),
+        "pt" => Ok(languages::PORTUGUESE),
+        _ => Err(StatusCode::BAD_REQUEST), // 未対応の言語コードが来たら400を返す
+    }
+}
