@@ -43,6 +43,9 @@ async fn translate_handler(
     State(translator): State<Arc<Translator>>,
     Json(payload): Json<TranslateRequest>,
 ) -> Result<Json<TranslateResponse>, StatusCode> {
+    let source_lang = lang_maping(&payload.source)?;
+    let target_lang = lang_maping(&payload.target)?;
+
     match translator.translate(&payload.text, &payload.source, &payload.target).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
