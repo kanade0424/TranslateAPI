@@ -6,7 +6,7 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
-use trad::{Translator,Language,languages};
+use trad::{Translator,languages};
 use std::sync::Arc;
 #[derive(Deserialize, Debug)]
 struct TranslateRequest {
