@@ -46,7 +46,7 @@ async fn translate_handler(
     let source_lang = lang_maping(&payload.source)?;
     let target_lang = lang_maping(&payload.target)?;
 
-    match translator.translate(&payload.text, &payload.source, &payload.target).await {
+    match translator.translate(&payload.text, source_lang, target_lang).await {
         Ok(translated_text) => Ok(Json(TranslateResponse {
             text: translated_text,
         })),
