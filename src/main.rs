@@ -71,7 +71,7 @@ async fn status_handler(State(translator): State<Arc<Translator>>,) -> StatusCod
     }
 }
 
-fn lang_maping(code: &str) -> Result<trad::Languages, StatusCode> {
+fn lang_maping(code: &str) -> Result<&str, StatusCode> {
     match code.to_lowercase().as_str() {
         "ja" => Ok(languages::JAPANESE),
         "en" => Ok(languages::ENGLISH),
