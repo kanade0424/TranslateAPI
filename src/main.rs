@@ -36,6 +36,7 @@ async fn main()-> Result <(), Box<dyn std::error::Error>>{
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
+    println!("ポート{}でAPIサーバーが起動しました。",port);
     Ok(())
 }
 
